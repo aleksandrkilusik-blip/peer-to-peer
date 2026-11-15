@@ -141,7 +141,7 @@ hr{border:0;border-top:1px solid var(--line);margin:1.5em 0}
 .flag-quote,.flag-inline.flag-quote{background:var(--blu);border-color:var(--blub)}
 .tag{display:inline-block;font:700 11px/1 sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:3px 6px;border-radius:4px;background:#0003;margin-right:6px}
 .tag-quote{background:var(--blu);color:var(--blub)}.tag-unconf{background:var(--org);color:#8a4500}.tag-phone,.tag-crisis{background:var(--red);color:var(--redb)}
-.no-flags .flag,.no-flags .flag-inline,.no-flags .draft-banner,.no-flags .only-flags{display:none}
+.no-flags .flag,.no-flags .draft-banner,.no-flags .only-flags,.no-flags .flag-inline .tag{display:none}.no-flags .flag-inline{background:none;border:0;padding:0;color:inherit}
 .review{list-style:none;padding:0}.review li{padding:6px 0;border-bottom:1px solid var(--line);font-size:17px}
 .split>.body>h2{font-size:22px;margin-top:1.4em}
 .note{font-size:15px;color:var(--mut)}
@@ -195,10 +195,12 @@ code{background:color-mix(in srgb,var(--ink) 10%,transparent);padding:0 4px;bord
 .who span{font-weight:700}
 .doc article h3{font:700 21px/1.3 Arsenal,sans-serif;margin:1.3em 0 .4em}
 </style></head>
-<body>
+<body class="no-flags">
 <header class="top"><div class="wrap"><a class="brand" href="index.html">Рівний рівному</a>
 <nav class="menu" aria-label="Розділи"><a href="index.html">Головна</a><a href="kategoriya-1.html" aria-current="page">Цивільне життя</a><a href="kategoriya-3.html">Голова</a><a href="kudy-zvernutys.html">Куди звернутись</a><a href="dzherela.html">Джерела</a><a href="pro-sait.html">Про сайт</a></nav>
 <a class="sos" href="crisis.html" aria-label="Коли треба негайно: 112">SOS · 112</a></div></header>
+<div class="draft-banner"><div class="wrap">Режим перевірки: позначки показують, що ще треба доробити. <a href="review.html">Усі позначки</a> · <a href="?perevirka=off">Вимкнути</a></div></div>
+
 <main class="wrap"><div class="doc"><nav class="toc" aria-label="На цій сторінці"><p>На цій сторінці</p><ol><li><a href="#sut">Коротко суть</a></li><li><a href="#kroky">Кроки</a></li><li><a href="#dosvid">З досвіду побратима</a></li><li><a href="#kudy">Куди звернутись</a></li><li><a href="#vidmovyly">Якщо відмовили</a></li></ol></nav><article><p class="crumb"><a href="kategoriya-1.html">Цивільне життя</a></p><h1>Швидкий маршрут: отримав поранення — твої наступні кроки</h1><section id="sut" class="lede"><h2>Коротко суть</h2>
 <p>Почни з кроку 1 і йди по списку. Це карта, а не інструкція до кожного кабінету: на кожному кроці є посилання на окрему картку з деталями.</p>
 <p>Мета проста: щоб нічого не загубилось по дорозі. Найчастіше губляться документи і строки, а не права.</p>
@@ -245,7 +247,7 @@ code{background:color-mix(in srgb,var(--ink) 10%,transparent);padding:0 4px;bord
 <hr>
 <p>Якщо тобі чи комусь поруч зараз загрожує небезпека, телефонуй 112.</p>
 </section>
-</article><aside class="sibs"><p>Ще в розділі «Цивільне життя»</p><ul><li><a href="1-marshrut.html" aria-current="page">Швидкий маршрут</a></li><li><a href="1d-dokumenty-na-ruky.html">Документи на руки при звільненні</a></li></ul></aside></div></main>
+<div class="flag flag-unconf"><span class="tag">Не підтверджено</span><p>Згадані тут картки («Форма 5», «ВЛК», «ОГД» та інші) ще не опубліковані. Коли вийдуть — зробити їх посиланнями.</p></div></article><aside class="sibs"><p>Ще в розділі «Цивільне життя»</p><ul><li><a href="1-marshrut.html" aria-current="page">Швидкий маршрут</a></li><li><a href="1d-dokumenty-na-ruky.html">Документи на руки при звільненні</a></li></ul></aside></div></main>
 <footer><div class="wrap">
 <div class="fcols">
 <div><p>Розділи</p><ul><li><a href="index.html">Що в тебе зараз?</a></li><li><a href="kategoriya-1.html">Цивільне життя</a></li><li><a href="kategoriya-3.html">Голова</a></li><li><a href="kudy-zvernutys.html">Куди звернутись</a></li></ul></div>
@@ -256,6 +258,7 @@ code{background:color-mix(in srgb,var(--ink) 10%,transparent);padding:0 4px;bord
 <div class="fine"><p>Сайт не замінює лікаря чи юриста. Інформація для орієнтації, не діагноз і не юридична консультація.</p>
 </div></div></footer>
 <script>(function(){var d=document;
+try{var q=location.search;if(/perevirka=off/.test(q))localStorage.setItem('pp-flags','off');else if(/perevirka/.test(q))localStorage.setItem('pp-flags','on');if(localStorage.getItem('pp-flags')==='on')d.body.classList.remove('no-flags')}catch(e){}
 var parts=d.querySelector('.parts');
 if(!('IntersectionObserver' in window)){if(parts)parts.classList.add('in');return}
 /* зміст сторінки: підсвічує розділ, який зараз читаєш */
